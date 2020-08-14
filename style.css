@@ -1,0 +1,14 @@
+header{
+    color:white;
+    font-size: 58px;
+}
+
+.searchBar {
+    margin-bottom:10px;
+    border-radius: 0;
+}
+
+#searchBtn {
+    border: outset;
+}
+
