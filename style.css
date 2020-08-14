@@ -12,3 +12,7 @@ header{
     border: outset;
 }
 
+#searchArea {
+    width: 445px;
+    height: 580px;
+}
