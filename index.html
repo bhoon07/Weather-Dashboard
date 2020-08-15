@@ -56,5 +56,31 @@
             
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    
+    var APIKey = "61f3e66b9799e28652d671f2f05607a2";
+
+    var queryUrl = "https://api.openweathermap.org/data/2.5/weather?" + "q=Houston,Texas&appid=" + APIKey;
+
+    $.ajax({
+        url: queryUrl,
+        method: "GET"
+    }).then(function(response) {
+
+        console.log(response);
+
+        $("#city&date").html(response.name);
+        $("#humidity").text(response.main.humidity);
+
+        var tempF = (response.main.temp - 273.15) * 1.80 + 32;
+
+        $("#temperature").text("Temperature:" + tempF);
+
+        console.log("Temperature:" + tempF);
+    })
+    
+    </script>
+
 </body>
 </html>
