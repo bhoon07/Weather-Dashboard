@@ -118,10 +118,10 @@ let dateString = (unixTime => {
 
 let showValuesOnPage = (() => {
   let searchString = cityName + ', ' + countryCode;
-  $('#city-name').text(searchString + ' (' + dateString(Date.now()) + ')');
+  $('#cityName').text(searchString + ' (' + dateString(Date.now()) + ')');
   addToSearchHistory(searchString, Date.now());
   renderSearchHistory();
-  $('#weather-icon').attr('src', iconURL + iconName + '.png')
+  $('#weatherIcon').attr('src', iconURL + iconName + '.png')
   $('#temp-data').text('Temperature: ' + 
     (tempInK - 273.15).toFixed(2) + ' ' + String.fromCharCode(176) + 'C (' +
     ((tempInK - 273.15) * 9/5 + 32).toFixed(2) + ' ' + String.fromCharCode(176) + 'F)');
@@ -135,12 +135,12 @@ let setFiveDayData = (response => {
   let size = dataArray.length;
   let dayNumber = 1;
   for(let i = 0; i < size; i+=8) {
-    $(`#five-day-${dayNumber}`).find('h6').text(dateString(dataArray[i].dt * 1000));
-    $(`#five-day-${dayNumber}`).find('.weather-icon').attr('src', iconURL + dataArray[i].weather[0].icon + '.png');
-    $(`#five-day-${dayNumber}`).find('.temp-5').text('Temperature: ' + 
+    $(`#Day${dayNumber}`).find('h6').text(dateString(dataArray[i].dt * 1000));
+    $(`#Day${dayNumber}`).find('.weatherIcon').attr('src', iconURL + dataArray[i].weather[0].icon + '.png');
+    $(`#Day${dayNumber}`).find('.temp-5').text('Temperature: ' + 
       (dataArray[i].main.temp - 273.15).toFixed(2) + ' ' + String.fromCharCode(176) + 'C (' +
       ((dataArray[i].main.temp - 273.15) * 9/5 + 32).toFixed(2) + ' ' + String.fromCharCode(176) + 'F)');
-    $(`#five-day-${dayNumber}`).find('.hum-5').text('Humidity: ' + dataArray[i].main.humidity + '%');
+    $(`#Day${dayNumber}`).find('.hum-5').text('Humidity: ' + dataArray[i].main.humidity + '%');
     ++ dayNumber;
   }
 })
